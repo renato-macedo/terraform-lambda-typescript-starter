@@ -1,40 +1,25 @@
 {
-  "name": "terraform-lambda-example",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint --ext .js,.ts,.tsx ./lambda/src/",
-    "script:build-dependency-layer": "yarn install --prod; ./scripts/build-dependency-layer.sh; yarn install;",
-    "build": "tsc",
-    "tf:init": "cd terraform; terraform init",
-    "tf:plan": "cd terraform; terraform plan -var-file ./config/terraform.tfvars",
-    "tf:apply": "yarn build; cd terraform; terraform apply -var-file ./config/terraform.tfvars; yarn cleanup;",
-    "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
-    "deploy:all": "yarn script:build-dependency-layer; yarn tf:apply",
-    "update:all": "yarn tf:destroy -auto-approve; yarn deploy:all",
-    "cleanup": "rm -rf lambda/dist/*"
-  },
-  "repository": "git@github.com:rahman95/terraform-lambda-typescript-starter.git",
-  "author": "Rahman Younus <rahman_95@live.co.uk>",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/aws-lambda": "^8.10.39",
-    "@types/aws-sdk": "^2.7.0",
-    "@types/node": "^13.1.1",
-    "@typescript-eslint/eslint-plugin": "^2.13.0",
-    "@typescript-eslint/parser": "^2.13.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-typescript": "^6.3.1",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^3.1.0",
-    "prettier": "^1.19.1",
-    "ts-node": "^8.5.4",
-    "tsc": "^1.20150623.0",
-    "typescript": "^3.7.4"
-  },
-  "dependencies": {
-    "aws-sdk": "^2.596.0"
-  }
+    "name": "terraform-lambda-example",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "script:build-dependency-layer": "npm install --prod; ./scripts/build-dependency-layer.sh; npm install;",
+        "build": "tsc",
+        "tf:init": "cd terraform; terraform init",
+        "tf:plan": "cd terraform; terraform plan -var-file ./config/terraform.tfvars",
+        "tf:apply": "npm run build; cd terraform; terraform apply -var-file ./config/terraform.tfvars; npm run cleanup;",
+        "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
+        "deploy:all": "npm run script:build-dependency-layer; npm run tf:apply",
+        "update:all": "npm run tf:destroy -auto-approve; npm run deploy:all",
+        "cleanup": "rimraf lambda/dist/*"
+    },
+    "repository": "git@github.com:rahman95/terraform-lambda-typescript-starter.git",
+    "author": "Rahman Younus <rahman_95@live.co.uk>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.64",
+        "@types/node": "^14.14.10",
+        "rimraf": "^3.0.2",
+        "typescript": "^4.1.2"
+    }
 }
