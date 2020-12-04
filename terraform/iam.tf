@@ -32,22 +32,20 @@ data "aws_iam_policy_document" "lambda_document" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  policy = "${data.aws_iam_policy_document.lambda_document.json}"
+  policy = data.aws_iam_policy_document.lambda_document.json
 }
 
 resource "aws_iam_role" "lambda_role" {
   name               = "${local.name}-role"
-  assume_role_policy = "${data.aws_iam_policy_document.lambda_assume_role_document.json}"
-
-  tags = "${local.tags}"
+  assume_role_policy = data.aws_iam_policy_document.lambda_assume_role_document.json
 }
 
 resource "aws_iam_policy_attachment" "lambda_attachment" {
   name = "${local.name}-attachment"
 
   roles = [
-    "${aws_iam_role.lambda_role.name}",
+    aws_iam_role.lambda_role.name,
   ]
 
-  policy_arn = "${aws_iam_policy.lambda_policy.arn}"
+  policy_arn = aws_iam_policy.lambda_policy.arn
 }

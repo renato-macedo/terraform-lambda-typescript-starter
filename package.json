@@ -11,7 +11,7 @@
         "tf:destroy": "cd terraform; terraform destroy -var-file ./config/terraform.tfvars",
         "deploy:all": "npm run script:build-dependency-layer; npm run tf:apply",
         "update:all": "npm run tf:destroy -auto-approve; npm run deploy:all",
-        "cleanup": "rimraf lambda/dist/*"
+        "cleanup": "rimraf lambda/build/*"
     },
     "repository": "git@github.com:rahman95/terraform-lambda-typescript-starter.git",
     "author": "Rahman Younus <rahman_95@live.co.uk>",

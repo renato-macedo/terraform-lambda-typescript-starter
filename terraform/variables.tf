@@ -1,13 +1,13 @@
 variable "aws_region" {
-  type    = "string"
-  default = "eu-west-2"
+  type    = string
+  default = "us-east-1"
 }
 
 variable "aws_profile" {
-  type    = "string"
+  type    = string
   default = "default"
 }
 
 variable "example_secret" {
-  type = "string"
+  type = string
 }

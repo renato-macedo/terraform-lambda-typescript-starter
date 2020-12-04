@@ -3,3 +3,5 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 
 node_modules
+lambda/build/*.js
+dist
