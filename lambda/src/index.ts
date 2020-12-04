@@ -1,17 +1,10 @@
-const defaultHeaders = {
-  'Content-Type': 'text/html',
-};
+import { APIGatewayProxyHandler } from "aws-lambda";
 
-const response = ({ statusCode, headers = defaultHeaders, body }: ResponseInput): Response => {
-  return {
-    statusCode,
-    headers,
-    body,
-  };
-};
-
-const handler = (): Response => {
-  return response({ statusCode: 200, body: 'Hello World' });
+const handler: APIGatewayProxyHandler = async () => {
+    return {
+        statusCode: 200,
+        body: "Hello World",
+    };
 };
 
 export { handler };
